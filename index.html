@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Put video behind content */
+  filter: blur(15px);
+  transform: scale(1.1);
+}
+        #a{
+            background-color: #FFEFC8;
+            border: none;
+            box-sizing: border-box;
+            padding: 0px 2px 0px 2px;
+            /* border-radius: 3px; */
+        }
+        #a:focus{
+            outline: none;
+            border: none;
+        }
+        #b{
+            background-color: #FFEFC8;
+            border: none;
+            box-sizing: border-box;
+            padding: 0px 2px 0px 2px;
+            /* border-radius: 3px; */
+        }
+        #b:focus{
+            outline: none;
+            border: none;
+        }
+        #ans{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 2px;
+            /* border-radius: 3px; */
+        }
+        .but{
+            border: none;
+            border-radius: 0px;
+            /* width: 50px; */
+            height: 20px;
+            box-sizing: border-box;
+            background-color: #B8D576;
+            color: rgb(0, 0, 0);
+            font-weight:600
+        }
+        .but:hover{
+            border-bottom: solid rgb(0, 0, 0) 1.4px;
+        }
+        .res{
+            font-weight: bo;
+            border: none;
+            border-radius: 0px;
+            /* width: 50px; */
+            height: 20px;
+            background-color: #D70654;
+            color: white;
+        }
+        .res:hover{
+            border-bottom: solid rgb(255, 255, 255) 1.4px;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;  display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #FFD95F;">
+    
+        <div>
+        <div style="margin-bottom: 10px; display: flex;" >
+            <input id="a"    type="number" style="height: 30px; width: 60px;">
+            <label style=" display: flex; margin-left : 10px; margin-right: 10px; align-items: center;">+</label>
+            <input id="b" type="number" style="height: 30px; width: 60px; margin-right: 10px;"><br>
+            <a style="margin: 0px 10px 0px 0px; display: flex; flex-direction: column; justify-content: center;">=</a>
+            <div id="ans" style="height: 30px; width: 60px; background-color: rgb(255, 255, 255);"><a id="answ"></a></div>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <input class="res" onclick="change_text()" type="button" value="Reset">
+            <input class="but" onclick="addd()" type="button" value="Calculate">
+        </div>
+        </div>
+    </div>
+    <script>
+        function addd(){
+            let A = Number(document.getElementById("a").value);
+            let B = Number(document.getElementById("b").value);
+            document.getElementById("answ").innerText = A + B;
+        }
+        function change_text(){
+        let cnf = confirm("Are you sure?");
+        if(cnf){document.getElementById("a").value = "";
+        document.getElementById("b").value = "";
+        document.getElementById("answ").innerText="";
+        }
+        }
+        window.onbeforeunload = function () {
+    return "Refreshing or leaving will clear the form. Are you sure?";
+};
+window.onload = function () {
+    document.getElementById("a").value = "";
+    document.getElementById("b").value = "";
+    document.getElementById("answ").innerText = "";
+};
+
+    </script>
+    </body>
+    
+</html>
